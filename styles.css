@@ -241,20 +241,55 @@ html[lang="es"] .display-title{font-size:clamp(34px,3.8vw,54px)}
   .ui-arrow, .visual-arrow { display: none !important; }
 }
 
-/* Natural portrait: a quiet cream panel that keeps the face unobstructed. */
-.hero-photo--portrait { top: 6px; right: 0; width: 46%; height: 500px; }
-.hero-photo--portrait::before, .hero-photo--portrait::after { display: none; }
-.hero-photo--portrait .photo-frame {
-  inset: 0 0 0 6%; width: 94%; height: 100%; clip-path: none;
-  border: 1px solid var(--line); border-radius: 3px; background: var(--paper);
+/* Original landscape photograph, with the headline in its open sky. */
+.hero.hero--landscape {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto; gap: 0 28px; min-height: 0; padding: 24px 0 28px;
 }
-.hero-photo--portrait .photo-frame img {
-  height: 100%; object-fit: cover; object-position: center top; transform: none; filter: none;
+.hero--landscape .hero-title-wrap {
+  grid-area: 1 / 1 / 2 / 3; align-self: start; padding: 36px 38px;
 }
-@media (max-width: 1100px) and (min-width: 701px) {
-  .hero-photo--portrait { width: 45%; height: 460px; }
+.hero--landscape .eyebrow { color: #223346; margin-bottom: 16px; }
+.hero--landscape .eyebrow::before { background: #223346; }
+.hero--landscape .display-title,
+html[lang="es"] .hero--landscape .display-title {
+  font-size: clamp(36px, 4.3vw, 62px); color: #182838; line-height: 1;
+}
+.hero--landscape .accent { color: #54275e; }
+.hero--landscape .headline-scribble { display: none; }
+.hero--landscape .hero-photo--landscape {
+  position: relative; grid-area: 1 / 1 / 2 / 3; inset: auto;
+  width: 100%; height: clamp(650px, 70vw, 900px); margin: 0; pointer-events: none;
+}
+.hero-photo--landscape::before, .hero-photo--landscape::after { display: none; }
+.hero-photo--landscape .photo-frame {
+  inset: 0; width: 100%; height: 100%; clip-path: none; border-radius: 3px;
+}
+.hero-photo--landscape .photo-frame img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  transform: none; filter: none;
+}
+.hero--landscape .hero-intro { grid-area: 2 / 1; max-width: none; padding-top: 24px; }
+.hero--landscape .hero-intro > p { max-width: 540px; }
+.hero--landscape .hero-tags { max-width: none; margin-bottom: 18px; }
+.hero--landscape .hero-status { grid-area: 2 / 2; align-self: end; margin: 24px 0 6px; max-width: 240px; }
+@media (max-width: 900px) {
+  .hero.hero--landscape { grid-template-columns: 1fr; }
+  .hero--landscape .hero-intro { grid-area: 2 / 1; }
+  .hero--landscape .hero-status { grid-area: 3 / 1; margin: 20px 0 0; max-width: none; }
 }
 @media (max-width: 700px) {
-  .hero-photo--portrait { top: auto; right: auto; width: 100%; height: 430px; margin: 26px 0 12px; }
-  .hero-photo--portrait .photo-frame { inset: 0 6%; width: 88%; }
+  .hero.hero--landscape { padding: 18px 0 25px; }
+  .hero--landscape .hero-title-wrap { padding: 16px 18px; }
+  .hero--landscape .eyebrow { font-size: 6px; letter-spacing: 0; gap: 6px; margin-bottom: 9px; }
+  .hero--landscape .eyebrow::before { width: 4px; height: 4px; }
+  .hero--landscape .display-title,
+  html[lang="es"] .hero--landscape .display-title { font-size: clamp(20px, 5.6vw, 39px); }
+  .hero--landscape .hero-photo--landscape { height: auto; aspect-ratio: 3024 / 3120; }
+  .hero--landscape .hero-intro { padding-top: 22px; }
+}
+@media print {
+  .hero.hero--landscape { display: block; padding: 0 0 18px; }
+  .hero--landscape .hero-title-wrap { padding: 0; }
+  .hero--landscape .hero-intro { padding-top: 10px; }
 }
