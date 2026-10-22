@@ -240,3 +240,21 @@ html[lang="es"] .display-title{font-size:clamp(34px,3.8vw,54px)}
 @media (max-width: 700px), (hover: none) and (pointer: coarse) {
   .ui-arrow, .visual-arrow { display: none !important; }
 }
+
+/* Natural portrait: a quiet cream panel that keeps the face unobstructed. */
+.hero-photo--portrait { top: 6px; right: 0; width: 46%; height: 500px; }
+.hero-photo--portrait::before, .hero-photo--portrait::after { display: none; }
+.hero-photo--portrait .photo-frame {
+  inset: 0 0 0 6%; width: 94%; height: 100%; clip-path: none;
+  border: 1px solid var(--line); border-radius: 3px; background: var(--paper);
+}
+.hero-photo--portrait .photo-frame img {
+  object-fit: cover; object-position: center 28%; filter: none;
+}
+@media (max-width: 1100px) and (min-width: 701px) {
+  .hero-photo--portrait { width: 45%; height: 460px; }
+}
+@media (max-width: 700px) {
+  .hero-photo--portrait { top: auto; right: auto; width: 100%; height: 430px; margin: 26px 0 12px; }
+  .hero-photo--portrait .photo-frame { inset: 0 6%; width: 88%; }
+}
